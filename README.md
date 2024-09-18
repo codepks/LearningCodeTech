@@ -68,3 +68,23 @@ if __name__ == "__main__":
 1. Creates a UDP socket and defines the server's address.
 2. Sends a message to the server.
 3. Waits for a response and prints it.
+
+## Single Example to hold all the types
+A **Smart Home Security System** is an excellent example of a software + hardware system that can implement all types of IPC communication methods. Here's how each IPC method can be utilized within this system:
+
+Example: Smart Home Security System
+1. Shared Memory: The central security controller (e.g., a Raspberry Pi) maintains a shared memory segment that stores the status of various sensors (motion detectors, door/window sensors). Multiple processes (e.g., a monitoring process and a user interface process) can access this shared memory to reflect real-time changes in security status.
+
+2. Message Queues: When a motion sensor detects movement, it sends a message to a queue. A separate process that handles alerts reads from this queue and triggers notifications to the homeowner.
+
+3. Pipes (Named and Anonymous) : An anonymous pipe can be used between the motion detection process and the alerting process. The motion detector writes data (e.g., "motion detected") to the pipe, while the alerting process reads from it to send notifications.
+
+4. Sockets: The security system can use sockets for communication between the central controller and remote devices (e.g., security cameras). The controller acts as a server, while the cameras act as clients, sending video feeds and receiving commands.
+
+5. Remote Procedure Calls (RPC): The central controller can expose an RPC interface that allows a mobile app to call functions directly (e.g., activateAlarm()). This simplifies the interaction with the security system.
+
+6. Signals and Events: When a door/window sensor is triggered, it can send a signal to the central controller to activate the alarm system or notify the homeowner.
+
+7. File-Based Communication:The system can log security events (e.g., motion detected, door opened) to a file. A reporting process can read this log file to generate daily or weekly security reports.
+
+
